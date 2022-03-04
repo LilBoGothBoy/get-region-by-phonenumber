@@ -18,7 +18,7 @@ class Bot_Answer(Resource):
         response = requests.get(
             f'http://rosreestr.subnets.ru/?get=num&num={phone_number}&format=json')
         todos = json.loads(response.text)
-        if len(todos) == 11:
+        if len(phone_number) == 11:
             return todos['0']['region'], 200
         else:
             return 'Error!', 404
