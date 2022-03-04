@@ -1,0 +1,7 @@
+flask_restful
+flask
+json
+logging
+requests
+sys
+gunicorn
