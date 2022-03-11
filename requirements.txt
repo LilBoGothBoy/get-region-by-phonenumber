@@ -1,5 +1,4 @@
 flask_restful
 flask
 requests
-sys
 gunicorn
