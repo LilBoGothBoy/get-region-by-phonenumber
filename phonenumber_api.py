@@ -1,6 +1,5 @@
 from flask_restful import Api, Resource
 from flask import Flask
-import json
 import logging
 import requests
 import sys
@@ -20,10 +19,11 @@ class Bot_Answer(Resource):
         phone_number = phone_number.replace(")", "")
         phone_number = phone_number.replace("+", "")
         response = requests.get(
-            f'http://rosreestr.subnets.ru/?get=num&num={phone_number}&format=json')
-        todos = json.loads(response.text)
-        if len(todos) == 11:
-            return todos['0']['region'], 200
+            f'http://rosreestr.subnets.ru/?get=num&num={phone_number}&field=region&format=csv')
+        if len(phone_number) != 11 and phone_number[0] not in ("7", "8"):
+            phone_number = "8" + phone_number
+        if len(phone_number) == 11:
+            return response.text, 200
         else:
             return 'Error!', 404
 
