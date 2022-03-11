@@ -1,6 +1,5 @@
 flask_restful
 flask
-logging
 requests
 sys
 gunicorn
