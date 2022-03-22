@@ -23,9 +23,9 @@ class Bot_Answer(Resource):
         if len(phone_number) != 11 and phone_number[0] not in ("7", "8"):
             phone_number = "8" + phone_number
         if len(phone_number) == 11:
-            return response.text, 200
+            return (response.text).replace("*", ""), 200
         else:
-            return 'Error!', 404
+            return 404
 
 
 api.add_resource(Bot_Answer, '/get_region/<string:phone_number>')
