@@ -27,6 +27,8 @@ class Bot_Answer(Resource):
             answer = answer.replace("<", "")
             answer = answer.replace("pre>", "")
             answer = answer.replace("/", "")
+            answer = answer.replace("\n", "")
+            answer = answer.replace("\"", "")
             return answer, 200
         else:
             return 404
