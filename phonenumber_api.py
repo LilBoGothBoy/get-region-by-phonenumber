@@ -23,7 +23,11 @@ class Bot_Answer(Resource):
         if len(phone_number) != 11 and phone_number[0] not in ("7", "8"):
             phone_number = "8" + phone_number
         if len(phone_number) == 11:
-            return (response.text).replace("*", ""), 200
+            answer = (response.text).replace("*", "")
+            answer = answer.replace("<", "")
+            answer = answer.replace("pre>", "")
+            answer = answer.replace("/", "")
+            return answer, 200
         else:
             return 404
 
