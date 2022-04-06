@@ -13,6 +13,11 @@ app.logger.setLevel(logging.ERROR)
 
 class Bot_Answer(Resource):
     def get(self, phone_number):
+        phone_number = phone_number.replace(" ", "")
+        phone_number = phone_number.replace("-", "")
+        phone_number = phone_number.replace("(", "")
+        phone_number = phone_number.replace(")", "")
+        phone_number = phone_number.replace("+", "")
         response = requests.get(
             f'http://rosreestr.subnets.ru/?get=num&num={phone_number}&field=region')
         if len(phone_number) != 11 and phone_number[0] not in ("7", "8"):
